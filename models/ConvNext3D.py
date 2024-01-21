@@ -160,10 +160,30 @@ def convnext_xlarge(**kwargs):
     model = ConvNeXt(depths=[3, 3, 27, 3], dims=[256, 512, 1024, 2048], **kwargs)
     return model
 
+def generate_model(model_depth, **kwargs):
+    assert model_depth in [10, 18, 34, 50, 101, 152, 200]
+
+    if model_depth == 10:
+        model = ConvNeXt(depths=[1, 1, 1, 1], dims=[96, 192, 384, 768], **kwargs)
+    elif model_depth == 18:
+        model = ConvNeXt(depths=[2, 2, 2, 2], dims=[96, 192, 384, 768], **kwargs)
+    elif model_depth == 34:
+        model = ConvNeXt(depths=[3, 3, 9, 3], dims=[96, 192, 384, 768], **kwargs)
+    elif model_depth == 50:
+        model = ConvNeXt(depths=[3, 3, 27, 3], dims=[96, 192, 384, 768], **kwargs)
+    elif model_depth == 101:
+        model = ConvNeXt(depths=[3, 3, 27, 3], dims=[128, 256, 512, 1024], **kwargs)
+    elif model_depth == 152:
+        model = ConvNeXt(depths=[3, 3, 27, 3], dims=[192, 384, 768, 1536], **kwargs)
+    elif model_depth == 200:
+        model = ConvNeXt(depths=[3, 3, 27, 3], dims=[256, 512, 1024, 2048], **kwargs)
+
+    return model
+
 # To test the ConvNext3D model    
-def test():
-    net = convnext_xtiny()
-    x = torch.randn(1, 3, 224, 224, 100)
-    y = net(x).cuda()
-    print('Total params: %.2fM' % (sum(p.numel() for p in net.parameters()) / 1000000.0))
+#def test():
+#    net = convnext_xtiny()
+#    x = torch.randn(1, 3, 224, 224, 100)
+#    y = net(x).cuda()
+#    print('Total params: %.2fM' % (sum(p.numel() for p in net.parameters()) / 1000000.0))
     
