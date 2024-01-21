@@ -216,7 +216,7 @@ def parse_opts():
                         help='Trained model is saved at every this epochs.')
     parser.add_argument(
         '--model',
-        default='resnet',
+        default='ConvNext3D',
         type=str,
         help=
         '(resnet | resnet2p1d | preresnet | wideresnet | resnext | densenet | ')
