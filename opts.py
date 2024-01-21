@@ -22,7 +22,7 @@ def parse_opts():
                         help='Result directory path')
     parser.add_argument(
         '--dataset',
-        default='kinetics',
+        default='ucf101',
         type=str,
         help='Used dataset (activitynet | kinetics | ucf101 | hmdb51)')
     parser.add_argument(
@@ -49,7 +49,7 @@ def parse_opts():
               '(conv1, layer1, fc, denseblock1, classifier, ...).'
               'The default means all layers are fine-tuned.'))
     parser.add_argument('--sample_size',
-                        default=112,
+                        default=224,
                         type=int,
                         help='Height and width of inputs')
     parser.add_argument('--sample_duration',
