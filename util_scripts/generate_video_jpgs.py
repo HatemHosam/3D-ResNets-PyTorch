@@ -58,7 +58,7 @@ def class_process(class_dir_path, dst_root_path, ext, fps=-1, size=240):
         return
 
     dst_class_path = dst_root_path / class_dir_path.name
-    dst_class_path.mkdir(exist_ok=True)
+    dst_class_path.mkdir(exist_ok=False)
 
     for video_file_path in sorted(class_dir_path.iterdir()):
         video_process(video_file_path, dst_class_path, ext, fps, size)
